@@ -44,7 +44,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
                 Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} ||{3,-20}", item.id, item.nome, item.cartaoSus, item.cpf);
             }
 
-
             Console.ResetColor();
         }
     }

@@ -10,6 +10,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
     public class Remedio : Entidade
     {
+        Tela tela = new Tela();
         public string nome { get; set; }
         public string descricao { get; set; }
         public int quantidade { get; set; }
@@ -21,12 +22,29 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             
         }
 
-        public Remedio(int id, string nome, string descricao, int quantidade)
+        public Remedio(int id, string nome, string descricao, int quantidade, int quantidadeMinima)
         {
             this.nome = nome;
             this.descricao = descricao;
             this.quantidade = quantidade;
-            
+            this.quantidadeMinima = quantidadeMinima;
+        }
+
+        public void VerificarQuantidadeRemedio()
+        {
+            if(quantidade < quantidadeMinima)
+            {
+                tela.Mensagem("Quantidade de remedio abaixo do necessario!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                return;
+            }
+
+            else if (quantidade == 0)
+            {
+                tela.Mensagem("O remedio acabou no estoque!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                return;
+            }
         }
     }
 }

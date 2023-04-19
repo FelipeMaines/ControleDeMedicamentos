@@ -24,11 +24,5 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
             this.cnpj = cnpj;
             this.medicamentos = medicamentos;
         }
-
-
-
-
-
-
     }
 }

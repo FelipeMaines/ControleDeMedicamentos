@@ -10,9 +10,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
     public class RemedioRepositorio : Repositorio
     {
-
         TelaRemedio tela = new TelaRemedio();
-       
 
         public void CriarRemedio()
         {

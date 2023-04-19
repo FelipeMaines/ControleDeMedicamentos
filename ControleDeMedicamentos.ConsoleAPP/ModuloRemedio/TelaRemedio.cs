@@ -1,4 +1,5 @@
-﻿using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
+﻿using ControleDeMedicamentos.ConsoleAPP.Junta;
+using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using System;
 using System.Collections;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
-    public class TelaRemedio
+    public class TelaRemedio : Tela
     {
         public Remedio PegarInformacoesRemedio(ArrayList array)
         {
@@ -21,10 +22,13 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             Console.WriteLine("Qual a descricao do Remedio? ");
             string descricao = Console.ReadLine();
 
-            Console.WriteLine("Qual a quantidade necessaria do Remedio? ");
+            Console.WriteLine("Qual a quantidade em estoque do Remedio? ");
             int quantidade = int.Parse(Console.ReadLine());
 
-            Remedio remedio = new Remedio(id, nome, descricao, quantidade);
+            Console.WriteLine("Qual a qauntidade minima que deve ter no estoque?");
+            int quantiadeMinima = int.Parse(Console.ReadLine());
+
+            Remedio remedio = new Remedio(id, nome, descricao, quantidade, quantiadeMinima);
 
             return remedio;
         }

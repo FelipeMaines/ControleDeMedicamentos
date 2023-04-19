@@ -10,13 +10,13 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 {
     public class FornecedorRepositorio : Repositorio
     {
-        public ArrayList Fornecedores = new ArrayList();
+       
         TelaFornecedor tela = new TelaFornecedor();
         public void CriarFornecedor()
         {
             Fornecedor fornecedor = tela.PegarInformacoesFornecedor();
 
-            AdicionarArray(Fornecedores, fornecedor);
+            AdicionarArray(fornecedores, fornecedor);
         }
     }
 }

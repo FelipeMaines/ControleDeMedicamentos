@@ -14,7 +14,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
         public ArrayList listaFuncionarios = new ArrayList();
         public ArrayList pacientes = new ArrayList();
         public ArrayList remediosCadastados = new ArrayList();
-
+        public ArrayList fornecedores = new ArrayList();
+        public ArrayList Aquisicao = new ArrayList();
 
 
         public void AdicionarArray(ArrayList array, Entidade item)

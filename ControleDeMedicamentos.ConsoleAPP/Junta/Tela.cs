@@ -21,5 +21,13 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
             int id = int.Parse(Console.ReadLine());
             return id;
         }
+
+        public int PegarInformacao(string mensagem)
+        {
+            Mensagem(mensagem, ConsoleColor.White);
+            int item = int.Parse(Console.ReadLine());
+
+            return item;
+        }
     }
 }

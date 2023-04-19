@@ -1,14 +1,22 @@
-﻿using System;
+﻿using ControleDeMedicamentos.ConsoleAPP.Junta;
+using ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor;
+using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
+using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
+using ControleDeMedicamentos.ConsoleAPP.Requisicao;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
 {
-    public class TelaFuncionario
+    public class TelaFuncionario : Tela
     {
+    
+
         public Funcionario PegarInfoECriarFuncionario(ArrayList array)
         {
             int id = array.Count;
@@ -40,6 +48,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
             Console.ResetColor();
         }
 
+        
     }
 
 

@@ -1,4 +1,5 @@
-﻿using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
+﻿using ControleDeMedicamentos.ConsoleAPP.Junta;
+using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 {
-    public class Requisicao
+    public class Requisicao : Entidade
     {
         public Paciente paciente;
         public Remedio remedio;

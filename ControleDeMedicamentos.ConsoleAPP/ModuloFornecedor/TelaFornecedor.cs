@@ -26,7 +26,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 
             do
             {
-                Console.WriteLine("Qual os medicamentos que ele fornece?");
+                Console.WriteLine("Qual os medicamentos que ele fornece? / s para sair");
                 nomeMedicamento = Console.ReadLine();
 
                 if(nomeMedicamento != "s")
