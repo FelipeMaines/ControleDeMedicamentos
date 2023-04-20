@@ -2,20 +2,13 @@
 using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 {
     public class TelaRequisicao : Tela
     {
-        TelaRemedio telaRemedio = new TelaRemedio();
         Repositorio repositorio = new Repositorio();
-        TelaFuncionario telaFuncionario = new TelaFuncionario();
         public Paciente PegarPaciente(ArrayList pacientes)
         {
             //telaPaciente.MostrarPacientes(pacientes);

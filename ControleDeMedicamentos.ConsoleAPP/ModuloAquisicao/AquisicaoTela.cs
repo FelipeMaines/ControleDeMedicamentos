@@ -12,9 +12,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
 {
     internal class AquisicaoTela : Tela
     {
-        TelaRemedio telaRemedio = new TelaRemedio();
         Repositorio repositorio = new Repositorio();  
-        TelaFuncionario Telafuncionario = new TelaFuncionario();
         public Remedio PegarValorRemedio(ArrayList remediosCadastrados)
         {
             //telaRemedio.MostrarRemedios(remediosCadastrados);

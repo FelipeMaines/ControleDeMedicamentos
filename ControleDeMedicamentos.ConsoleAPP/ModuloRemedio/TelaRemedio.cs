@@ -12,8 +12,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
     public class TelaRemedio : Tela
     {
-        Repositorio repositorio = new Repositorio();
-
         public Remedio PegarInformacoesRemedio(ArrayList array)
         {
             int id = array.Count;
