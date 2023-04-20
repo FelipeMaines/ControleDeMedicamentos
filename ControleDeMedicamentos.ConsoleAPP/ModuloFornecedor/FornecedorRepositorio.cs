@@ -10,7 +10,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 {
     public class FornecedorRepositorio : Repositorio
     {
-       
         TelaFornecedor tela = new TelaFornecedor();
         public void CriarFornecedor()
         {

@@ -18,7 +18,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
         public DateTime data { get; set; }
         public int quantidadeMedicamento { get; set; }
 
-
         public Aquisicao()
         {
             
@@ -28,6 +27,5 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
         {
             
         }
-
     }
 }

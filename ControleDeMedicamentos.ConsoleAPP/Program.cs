@@ -31,7 +31,7 @@ namespace ControleDeMedicamentos.ConsoleAPP
             remedio.descricao = "dor";
             remedio.nome = "dipirona";
             remedio.quantidadeMinima = 5;
-            remedio.quantidade = 0;
+            remedio.quantidade = 5;
             return remedio;
         }
 
@@ -67,9 +67,11 @@ namespace ControleDeMedicamentos.ConsoleAPP
             FuncionarioRepositorio func = new FuncionarioRepositorio();
             PacienteRepositorio paciente = new PacienteRepositorio();
             RequisicaoRepositorio requisicao = new RequisicaoRepositorio();
-            RemedioRepositorio remedio = new RemedioRepositorio();
+            RemedioRepositorio repositorioRemedio = new RemedioRepositorio();
             FornecedorRepositorio fornecedor = new FornecedorRepositorio();
             AquisicaoRepositorio aquisicao = new AquisicaoRepositorio ();
+            TelaRemedio telaRemedio = new TelaRemedio ();
+
             int valor = 1;
 
             while (valor != 0) 
@@ -80,7 +82,9 @@ namespace ControleDeMedicamentos.ConsoleAPP
                 Console.WriteLine("[3] Cadastrar Remedios");
                 Console.WriteLine("[4] Cadastrar Pacientes");
                 Console.WriteLine("[5] Cadastrar Requisicoes");
-                Console.WriteLine("[6] Fazer Requisicao ");
+                Console.WriteLine("[6] Fazer Aquisicao de medicamento");
+                Console.WriteLine("[7] Ver remedios com baixo estoque");
+                Console.WriteLine("[8] Ver remedios com maior frequencia de saida!");
                 Console.WriteLine("[0] Sair");
                 valor = int.Parse(Console.ReadLine());
 
@@ -102,7 +106,7 @@ namespace ControleDeMedicamentos.ConsoleAPP
                     case 3:
                         Console.Clear();
                         Remedio remeioAuto = CrirarRemedioAtomatico();
-                        repositorio.AdicionarArray(remedio.remediosCadastados, remeioAuto);
+                        repositorio.AdicionarArray(repositorioRemedio.remediosCadastados, remeioAuto);
                         break;
 
                     case 4:
@@ -113,12 +117,22 @@ namespace ControleDeMedicamentos.ConsoleAPP
 
                     case 5:
                         Console.Clear();
-                        requisicao.FazerRequisicao(func.listaFuncionarios, paciente.pacientes, remedio.remediosCadastados, fornecedor.fornecedores);
+                        requisicao.FazerRequisicao(func.listaFuncionarios, paciente.pacientes, repositorioRemedio.remediosCadastados, fornecedor.fornecedores, repositorio.RemediosBaixoEstoque);
                         break;
 
                     case 6:
                         Console.Clear();
-                        aquisicao.FazerAquisicao(remedio.remediosCadastados, fornecedor.fornecedores, func.listaFuncionarios);
+                        aquisicao.FazerAquisicao(repositorioRemedio.remediosCadastados, fornecedor.fornecedores, func.listaFuncionarios, repositorio.RemediosBaixoEstoque);
+                        break;
+
+                    case 7:
+                        Console.Clear();
+                        telaRemedio.MostrarRemediosBaixoEstoque(repositorio.RemediosBaixoEstoque);
+                        break;
+
+                    case 8:
+                        Console.Clear();
+                        telaRemedio.MostrarRemedioMaisRetirado(repositorioRemedio.remediosCadastados);
                         break;
                 }
             }

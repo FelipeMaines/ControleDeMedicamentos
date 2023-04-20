@@ -14,7 +14,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
         public string nome { get; set; }
         public string descricao { get; set; }
         public int quantidade { get; set; }
-        public ArrayList historicoRequisicao { get; set; }
+
+        public int vezesRetirados = 0;
         public int quantidadeMinima { get; set; }
 
         public Remedio()
@@ -24,6 +25,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 
         public Remedio(int id, string nome, string descricao, int quantidade, int quantidadeMinima)
         {
+            
+
             this.nome = nome;
             this.descricao = descricao;
             this.quantidade = quantidade;

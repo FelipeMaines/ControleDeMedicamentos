@@ -18,15 +18,40 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
         TelaPaciente telaPaciente = new TelaPaciente();
         TelaRequisicao telaRequisicao = new TelaRequisicao();
         AquisicaoRepositorio aquisicao = new AquisicaoRepositorio();
-        public Requisicao FazerRequisicao(ArrayList listaFuncionarios, ArrayList pacientes, ArrayList remediosCadastados, ArrayList fornecedores)
+        public Requisicao FazerRequisicao(ArrayList listaFuncionarios, ArrayList pacientes, ArrayList remediosCadastados, ArrayList fornecedores, ArrayList RemediosBaixoEstoque)
         {
             Console.Clear();
-            Funcionario funcionario = NewMethod(listaFuncionarios);
+
+
+            if (listaFuncionarios.Count <= 0)
+            {
+                tela.Mensagem("Nenhum Funcionario cadastrado!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                return null;
+            }
+
+            else if (remediosCadastados.Count <= 0)
+            {
+                tela.Mensagem("Nenhum Remedio cadastrado!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                return null;
+            }
+
+            else if (pacientes.Count <= 0)
+            {
+
+                tela.Mensagem("Nenhum Paciente cadastrado!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                return null;
+            }
+
+            Funcionario funcionario = telaRequisicao.PegarInformacoesFuncionario(listaFuncionarios);
 
             Console.Clear();
-
+            
             Remedio remedio = telaRequisicao.PegarRemedio(remediosCadastados);
-            VerificarSeAhRemedio(remedio, remediosCadastados, fornecedores, listaFuncionarios, pacientes);
+            VerificarSeAhRemedio(remedio, remediosCadastados, fornecedores, listaFuncionarios, pacientes, RemediosBaixoEstoque);
+            remedio.vezesRetirados += 1;
 
             Console.Clear();
 
@@ -43,23 +68,19 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 
             requisicoesAbertas.Add(requisicao);
 
+            telaRemedio.EncherArrayBaixoEstoque(RemediosBaixoEstoque, remediosCadastados);
+
             return requisicao;
         }
 
-        private Funcionario NewMethod(ArrayList listaFuncionarios)
-        {
-            telaFunc.MostrarFuncionarios(listaFuncionarios);
-            int idFunc = tela.PegarOpcaoId("Qual o id do funcionario?");
-            Funcionario funcionario = (Funcionario)BuscarPorId(listaFuncionarios, idFunc);
-            return funcionario;
-        }
-
-        private void VerificarSeAhRemedio(Remedio remedio, ArrayList remediosCadastados, ArrayList Fornecedores,ArrayList listaFuncionarios, ArrayList pacientes)
+       private void VerificarSeAhRemedio(Remedio remedio, ArrayList remediosCadastados, ArrayList Fornecedores,ArrayList listaFuncionarios, ArrayList pacientes, ArrayList RemediosBaixoEstoque)
         {
             if(remedio.quantidade <= 0)
             {
                 tela.Mensagem("Remedio sem estoque, fazendo requisicao ao fornecedor!", ConsoleColor.DarkYellow);
-                aquisicao.FazerAquisicao(remediosCadastados, Fornecedores, listaFuncionarios);
+                Console.ReadLine();
+                Console.Clear();
+                aquisicao.FazerAquisicao(remediosCadastados, Fornecedores, listaFuncionarios, RemediosBaixoEstoque);
             }
         }
 
@@ -68,6 +89,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
             if (remedio.quantidade < quantidadeRemedio)
             {
                 tela.Mensagem("Nao ah esse numero de remedio em estoque!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
                 return;
             }
             else
@@ -76,6 +99,9 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
             if (remedio.quantidadeMinima >= remedio.quantidade)
             {
                 tela.Mensagem($"Recomendase fazer um pedido ao fornecedor para o remedio: {remedio.nome}", ConsoleColor.DarkYellow);
+                Console.ReadLine();
+                Console.Clear();
+                return;     
             }
         }
     }

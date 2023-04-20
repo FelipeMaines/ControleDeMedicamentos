@@ -14,39 +14,37 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
     internal class AquisicaoRepositorio : Repositorio
     {
         Tela tela = new Tela();
-        TelaFuncionario telaFuncionario = new TelaFuncionario();
-        TelaRemedio telaRemedio = new TelaRemedio();
-        public void FazerAquisicao(ArrayList remediosCadastados, ArrayList Fornecedores, ArrayList listaFuncionarios)
+        AquisicaoTela telaAquisicao = new AquisicaoTela();
+        TelaRemedio telaRemedio = new TelaRemedio();    
+        public void FazerAquisicao(ArrayList remediosCadastados, ArrayList Fornecedores, ArrayList listaFuncionarios, ArrayList RemediosBaixoEstoque)
         {
-            telaRemedio.MostrarRemedios(remediosCadastados);
-            int idMedicamento = tela.PegarInformacao("Qual o id do medicamento deseja adquirir? ");
-            Remedio remedio = (Remedio)BuscarPorId(remediosCadastados, idMedicamento);
+
+            Remedio remedio = telaAquisicao.PegarValorRemedio(remediosCadastados);
 
             int idFornecedor = BuscarFornecedor(remedio, Fornecedores);
 
-            if(idFornecedor == 404)
-            {
-                tela.Mensagem("Nenhum Fornecedorr cadastrado forncesse esse medicamento!", ConsoleColor.DarkRed);
-                Console.ReadLine();
+            if (VeriricarId(idFornecedor))
                 return;
-            }
 
             Fornecedor fornecedor = (Fornecedor)BuscarPorId(Fornecedores, idFornecedor);
-            
+
             Console.Clear();
 
-            telaFuncionario.MostrarFuncionarios(listaFuncionarios);
-            int idFuncionario = tela.PegarInformacao("Qual o id do funcionario fazendo a Aquisicao?");
-            Funcionario funcionario = (Funcionario)BuscarPorId(listaFuncionarios, idFuncionario);
+            Funcionario funcionario = telaAquisicao.PegarValorFuncionario(listaFuncionarios);
+
+            Console.Clear();
+
             DateTime date = DateTime.Today;
-
             int quantidade = tela.PegarInformacao("Qual a quantidade de medicamento deseja adicionar ao estoque?");
-
             remedio.quantidade += quantidade;
 
-            var aquisicao = new Aquisicao(fornecedor, remedio, funcionario, date, quantidade);
+            Console.Clear();
 
+            var aquisicao = new Aquisicao(fornecedor, remedio, funcionario, date, quantidade);
             AdicionarArray(Aquisicao, aquisicao);
+
+            telaRemedio.TirarDoBaixoEstoque(RemediosBaixoEstoque);
+            tela.Mensagem("Aquisicao feita com sucesso!", ConsoleColor.Green);
         }
 
         private int BuscarFornecedor(Remedio remedio, ArrayList Fornecedores)
@@ -62,6 +60,17 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
                 }
             }
             return 404;
+        }
+
+        private bool VeriricarId(int idFornecedor)
+        {
+            if (idFornecedor == 404)
+            {
+                tela.Mensagem("Nenhum Fornecedorr cadastrado forncesse esse medicamento!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                return true;
+            }
+            return false;
         }
     }
 }

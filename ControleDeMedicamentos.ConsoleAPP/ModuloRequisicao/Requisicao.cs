@@ -12,19 +12,21 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 {
     public class Requisicao : Entidade
     {
+        Repositorio repositorio = new Repositorio();
+        Tela tela = new Tela();
+
         public Paciente paciente;
         public Remedio remedio;
         public Funcionario funcionario;
         public DateTime data;
         public int quantidadeMedicamento;
 
-        public Requisicao()
-        {
-            
-        }
+        public Requisicao() { }
 
         public Requisicao(Paciente paciente, Remedio remedio, Funcionario funcionario, DateTime date, int quantidadeMedicamento)
         {
+
+
             this.paciente = paciente;
             this.remedio = remedio;
             this.funcionario = funcionario;

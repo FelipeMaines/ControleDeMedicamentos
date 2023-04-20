@@ -44,7 +44,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
                 Console.WriteLine("|{0,-15} |{1,-15} |{2,-20}", item.id, item.nome, item.cpf);
             }
 
-
             Console.ResetColor();
         }
 

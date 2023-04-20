@@ -38,7 +38,5 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 
             return fornecedor;
         }
-
-        
     }
 }

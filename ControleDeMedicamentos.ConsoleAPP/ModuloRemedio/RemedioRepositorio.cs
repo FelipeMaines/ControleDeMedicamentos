@@ -18,6 +18,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             AdicionarArray(remediosCadastados, remedio);
         }
 
+        
     }
 
 
