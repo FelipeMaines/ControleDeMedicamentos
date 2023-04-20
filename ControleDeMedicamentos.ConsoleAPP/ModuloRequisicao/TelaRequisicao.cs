@@ -13,13 +13,14 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 {
     public class TelaRequisicao : Tela
     {
-        TelaPaciente telaPaciente = new TelaPaciente();
         TelaRemedio telaRemedio = new TelaRemedio();
         Repositorio repositorio = new Repositorio();
         TelaFuncionario telaFuncionario = new TelaFuncionario();
         public Paciente PegarPaciente(ArrayList pacientes)
         {
-            telaPaciente.MostrarPacientes(pacientes);
+            //telaPaciente.MostrarPacientes(pacientes);
+
+            MostrarObjetos<Paciente>(pacientes, repositorio.camposPacientes);
             int idPaciente = PegarOpcaoId("Qual o id do paciente");
             Paciente paciente = (Paciente)repositorio.BuscarPorId(pacientes, idPaciente);
             return paciente;
@@ -27,7 +28,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 
         public Remedio PegarRemedio(ArrayList remediosCadastados)
         {
-            telaRemedio.MostrarRemedios(remediosCadastados);
+            //telaRemedio.MostrarRemedios(remediosCadastados);
+            MostrarObjetos<Remedio>(remediosCadastados, repositorio.camposRemedio);
             int idRemedio = PegarOpcaoId("Qual o id do remedio?");
             Remedio remedio = (Remedio)repositorio.BuscarPorId(remediosCadastados, idRemedio);
             return remedio;
@@ -42,7 +44,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
 
         public Funcionario PegarInformacoesFuncionario(ArrayList listaFuncionarios)
         {
-            telaFuncionario.MostrarFuncionarios(listaFuncionarios);
+            // telaFuncionario.MostrarFuncionarios(listaFuncionarios);
+            MostrarObjetos<Funcionario>(listaFuncionarios, repositorio.camposFuncionarios);
             int idFunc = PegarOpcaoId("Qual o id do funcionario?");
             Funcionario funcionario = (Funcionario)repositorio.BuscarPorId(listaFuncionarios, idFunc);
 

@@ -15,8 +15,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
 {
     public class TelaFuncionario : Tela
     {
-    
-
         public Funcionario PegarInfoECriarFuncionario(ArrayList array)
         {
             int id = array.Count;
@@ -32,23 +30,19 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
             return funcionario;
         }
 
-        public void MostrarFuncionarios(ArrayList array)
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+        //public void MostrarFuncionarios(ArrayList array)
+        //{
+        //    Console.Clear();
+        //    Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            Console.WriteLine("|{0,-15} |{1,-15} |{2,-20}", "Id", "Nome", "CPF");
+        //    Console.WriteLine("|{0,-15} |{1,-15} |{2,-20}", "Id", "Nome", "CPF");
 
-            foreach (Funcionario item in array)
-            {
-                Console.WriteLine("|{0,-15} |{1,-15} |{2,-20}", item.id, item.nome, item.cpf);
-            }
+        //    foreach (Funcionario item in array)
+        //    {
+        //        Console.WriteLine("|{0,-15} |{1,-15} |{2,-20}", item.id, item.nome, item.cpf);
+        //    }
 
-            Console.ResetColor();
-        }
-
-        
+        //    Console.ResetColor();
+        //}   
     }
-
-
 }

@@ -43,12 +43,12 @@ namespace ControleDeMedicamentos.ConsoleAPP
         //    fornecedor.cnpj = "123123123";
         //    fornecedor.nome = "Jose";
         //    fornecedor.numeroContato = "12313213";
-            
+
 
         //    return fornecedor;
         //}
 
-        static Paciente CriarPacienteAutomatico ()
+        static Paciente CriarPacienteAutomatico()
         {
             var paciente = new Paciente();
 
@@ -56,6 +56,7 @@ namespace ControleDeMedicamentos.ConsoleAPP
             paciente.cpf = "123213";
             paciente.cartaoSus = "12312321";
             paciente.nome = "Maria";
+            paciente.telefone = "23123213";
 
 
             return paciente;
@@ -63,18 +64,26 @@ namespace ControleDeMedicamentos.ConsoleAPP
 
         static void Main(string[] args)
         {
+            int valor = 1;
+            MostrarMenu(valor);
+        }
+
+
+        static void MostrarMenu(int valor)
+        {
             Repositorio repositorio = new Repositorio();
             FuncionarioRepositorio func = new FuncionarioRepositorio();
             PacienteRepositorio paciente = new PacienteRepositorio();
             RequisicaoRepositorio requisicao = new RequisicaoRepositorio();
             RemedioRepositorio repositorioRemedio = new RemedioRepositorio();
             FornecedorRepositorio fornecedor = new FornecedorRepositorio();
-            AquisicaoRepositorio aquisicao = new AquisicaoRepositorio ();
-            TelaRemedio telaRemedio = new TelaRemedio ();
+            AquisicaoRepositorio aquisicao = new AquisicaoRepositorio();
+            TelaRemedio telaRemedio = new TelaRemedio();
+            Tela tela = new Tela();
 
-            int valor = 1;
+            
 
-            while (valor != 0) 
+            while (valor != 0)
             {
                 Console.WriteLine("Qual Area deseja entrar?");
                 Console.WriteLine("[1] Cadastrar Funcionario");
@@ -105,8 +114,9 @@ namespace ControleDeMedicamentos.ConsoleAPP
 
                     case 3:
                         Console.Clear();
-                        Remedio remeioAuto = CrirarRemedioAtomatico();
-                        repositorio.AdicionarArray(repositorioRemedio.remediosCadastados, remeioAuto);
+                        //Remedio remeioAuto = CrirarRemedioAtomatico();
+                        //repositorio.AdicionarArray(repositorioRemedio.remediosCadastados, remeioAuto);
+                        repositorioRemedio.CriarRemedio();
                         break;
 
                     case 4:
@@ -127,6 +137,7 @@ namespace ControleDeMedicamentos.ConsoleAPP
 
                     case 7:
                         Console.Clear();
+                        tela.MostrarObjetos<Remedio>(repositorio.RemediosBaixoEstoque, repositorio.camposRemedio);
                         telaRemedio.MostrarRemediosBaixoEstoque(repositorio.RemediosBaixoEstoque);
                         break;
 

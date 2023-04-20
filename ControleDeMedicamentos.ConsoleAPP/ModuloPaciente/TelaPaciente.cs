@@ -32,19 +32,19 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
             return paciente;
         }
 
-        public void MostrarPacientes(ArrayList array)
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+        //public void MostrarPacientes(ArrayList array)
+        //{
+        //    Console.Clear();
+        //    Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} |{3,-20}", "Id", "Nome", "Cartao do Sus", "cpf");
+        //    Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} |{3,-20}", "Id", "Nome", "Cartao do Sus", "cpf");
 
-            foreach (Paciente item in array)
-            {
-                Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} ||{3,-20}", item.id, item.nome, item.cartaoSus, item.cpf);
-            }
+        //    foreach (Paciente item in array)
+        //    {
+        //        Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} ||{3,-20}", item.id, item.nome, item.cartaoSus, item.cpf);
+        //    }
 
-            Console.ResetColor();
-        }
+        //    Console.ResetColor();
+        //}
     }
 }

@@ -17,7 +17,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
         TelaFuncionario Telafuncionario = new TelaFuncionario();
         public Remedio PegarValorRemedio(ArrayList remediosCadastrados)
         {
-            telaRemedio.MostrarRemedios(remediosCadastrados);
+            //telaRemedio.MostrarRemedios(remediosCadastrados);
+            MostrarObjetos<Remedio>(remediosCadastrados, repositorio.camposRemedio);
             int idMedicamento = PegarInformacao("Qual o id do medicamento deseja adquirir? ");
             Remedio remedio = (Remedio)repositorio.BuscarPorId(remediosCadastrados, idMedicamento);
 
@@ -26,7 +27,9 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
 
         public Funcionario PegarValorFuncionario(ArrayList listaFuncionarios)
         {
-            Telafuncionario.MostrarFuncionarios(listaFuncionarios);
+            //Telafuncionario.MostrarFuncionarios(listaFuncionarios);
+            MostrarObjetos<Funcionario>(listaFuncionarios, repositorio.camposFuncionarios);
+
             int idFuncionario = PegarInformacao("Qual o id do funcionario fazendo a Aquisicao?");
             Funcionario funcionario = (Funcionario)repositorio.BuscarPorId(listaFuncionarios, idFuncionario);
 

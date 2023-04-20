@@ -26,7 +26,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
         public Remedio(int id, string nome, string descricao, int quantidade, int quantidadeMinima)
         {
             
-
+            this.id = id;
             this.nome = nome;
             this.descricao = descricao;
             this.quantidade = quantidade;

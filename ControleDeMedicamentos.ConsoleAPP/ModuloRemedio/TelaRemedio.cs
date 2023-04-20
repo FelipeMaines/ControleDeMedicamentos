@@ -64,17 +64,22 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
         public void TirarDoBaixoEstoque(ArrayList arraybaixoestoque)
         {
             if(arraybaixoestoque == null)
-            {
                 return;
-            }
+
+            else if (arraybaixoestoque.Count == 0)
+                return;
+
+            Remedio remedio = null;
 
             foreach (Remedio item in arraybaixoestoque)
             {
                 if (item.quantidade >= 5)
                 {
-                    arraybaixoestoque.Remove(item);
+                    remedio = item;
                 }
             }
+
+            arraybaixoestoque.Remove(remedio);
         }
 
         public void MostrarRemediosBaixoEstoque(ArrayList arraybaixoestoque)

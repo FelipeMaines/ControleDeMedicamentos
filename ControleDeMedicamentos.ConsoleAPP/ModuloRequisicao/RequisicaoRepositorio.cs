@@ -22,28 +22,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
         {
             Console.Clear();
 
-
-            if (listaFuncionarios.Count <= 0)
-            {
-                tela.Mensagem("Nenhum Funcionario cadastrado!", ConsoleColor.DarkRed);
-                Console.ReadLine();
+            if (VerificarPacienteFuncionarioRemedio(listaFuncionarios, remediosCadastados, pacientes))
                 return null;
-            }
-
-            else if (remediosCadastados.Count <= 0)
-            {
-                tela.Mensagem("Nenhum Remedio cadastrado!", ConsoleColor.DarkRed);
-                Console.ReadLine();
-                return null;
-            }
-
-            else if (pacientes.Count <= 0)
-            {
-
-                tela.Mensagem("Nenhum Paciente cadastrado!", ConsoleColor.DarkRed);
-                Console.ReadLine();
-                return null;
-            }
 
             Funcionario funcionario = telaRequisicao.PegarInformacoesFuncionario(listaFuncionarios);
 
@@ -103,6 +83,36 @@ namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
                 Console.Clear();
                 return;     
             }
+        }
+
+        private bool VerificarPacienteFuncionarioRemedio(ArrayList listaFuncionarios, ArrayList remediosCadastrados, ArrayList Pacientes)
+        {
+            if (listaFuncionarios.Count <= 0)
+            {
+                tela.Mensagem("Nenhum Funcionario cadastrado!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
+                return true;
+            }
+
+            else if (remediosCadastrados.Count <= 0)
+            {
+                tela.Mensagem("Nenhum Remedio cadastrado!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
+                return true;
+            }
+
+            else if (Pacientes.Count <= 0)
+            {
+
+                tela.Mensagem("Nenhum Paciente cadastrado!", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 
         public void CriarRemedio()
         {
+
             Remedio remedio = tela.PegarInformacoesRemedio(remediosCadastados);
             AdicionarArray(remediosCadastados, remedio);
         }

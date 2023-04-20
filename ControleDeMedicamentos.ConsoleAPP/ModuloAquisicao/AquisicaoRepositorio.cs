@@ -18,13 +18,18 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
         TelaRemedio telaRemedio = new TelaRemedio();    
         public void FazerAquisicao(ArrayList remediosCadastados, ArrayList Fornecedores, ArrayList listaFuncionarios, ArrayList RemediosBaixoEstoque)
         {
+            if (VerificarSeExiste(remediosCadastados, Fornecedores, listaFuncionarios))
+                return;
 
             Remedio remedio = telaAquisicao.PegarValorRemedio(remediosCadastados);
 
             int idFornecedor = BuscarFornecedor(remedio, Fornecedores);
 
             if (VeriricarId(idFornecedor))
+            {
+                Console.Clear();
                 return;
+            }
 
             Fornecedor fornecedor = (Fornecedor)BuscarPorId(Fornecedores, idFornecedor);
 
@@ -68,8 +73,40 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
             {
                 tela.Mensagem("Nenhum Fornecedorr cadastrado forncesse esse medicamento!", ConsoleColor.DarkRed);
                 Console.ReadLine();
+                Console.Clear() ;
                 return true;
             }
+            return false;
+        }
+
+        private bool VerificarSeExiste(ArrayList remedios, ArrayList fornecedores, ArrayList funcionarios)
+        {
+            if(remedios.Count <= 0)
+            {
+                tela.Mensagem("Nenhum Remedio cadastrado! ", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
+                return true;
+            }
+
+            else if(fornecedores.Count <= 0)
+            {
+
+                tela.Mensagem("Nenhum Fornecedor cadastrado! ", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
+                return true;
+            }
+
+            else if (funcionarios.Count <= 0)
+            {
+
+                tela.Mensagem("Nenhum funcionario cadastrado! ", ConsoleColor.DarkRed);
+                Console.ReadLine();
+                Console.Clear();
+                return true;
+            }
+
             return false;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleDeMedicamentos.ConsoleAPP.Junta;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 {
-    public class TelaFornecedor
+    public class TelaFornecedor : Tela
     {
         public Fornecedor PegarInformacoesFornecedor()
         {
@@ -36,6 +37,9 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 
             Fornecedor fornecedor = new Fornecedor(nome, cnpj, numeroTelefone, medicamentos);
 
+            Mensagem("Forncedor cadastrado com sucesso!", ConsoleColor.Green);
+            Console.ReadLine();
+            Console.Clear();
             return fornecedor;
         }
     }

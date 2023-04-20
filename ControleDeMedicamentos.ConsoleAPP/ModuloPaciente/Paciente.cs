@@ -12,7 +12,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
         public string nome { get; set; }
         public string cpf { get; set; }
         public string cartaoSus { get; set; }
-
         public string telefone { get; set; }
 
         public Paciente()
