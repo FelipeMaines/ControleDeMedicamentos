@@ -9,5 +9,12 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
     public class Entidade
     {
         public int id { get; set; }
+        public virtual void Atualizar(Entidade entidadeAtualizada)
+        {
+            id = entidadeAtualizada.id;
+        }
     }
+
+    
+
 }

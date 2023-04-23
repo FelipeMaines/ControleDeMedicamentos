@@ -4,7 +4,7 @@ using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
 using System.Collections;
 
-namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
+namespace ControleDeMedicamentos.ConsoleAPP.ModuloRequiscao
 {
     public class TelaRequisicao : Tela
     {

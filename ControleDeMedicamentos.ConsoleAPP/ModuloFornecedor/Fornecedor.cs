@@ -17,12 +17,13 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
             
         }
 
-        public Fornecedor(string nome, string cnpj, string numeroContato, ArrayList medicamentos)
+        public Fornecedor(int id, string nome, string cnpj, string numeroContato, ArrayList medicamentos)
         {
             this.nome = nome;
             this.numeroContato = numeroContato;
             this.cnpj = cnpj;
             this.medicamentos = medicamentos;
+            this.id = id;
         }
     }
 }

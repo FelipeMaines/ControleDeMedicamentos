@@ -4,7 +4,7 @@ using ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor;
 using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
-using ControleDeMedicamentos.ConsoleAPP.Requisicao;
+using ControleDeMedicamentos.ConsoleAPP.ModuloRequiscao;
 
 namespace ControleDeMedicamentos.ConsoleAPP
 {
@@ -74,11 +74,12 @@ namespace ControleDeMedicamentos.ConsoleAPP
             Repositorio repositorio = new Repositorio();
             FuncionarioRepositorio func = new FuncionarioRepositorio();
             PacienteRepositorio paciente = new PacienteRepositorio();
-            RequisicaoRepositorio requisicao = new RequisicaoRepositorio();
             RemedioRepositorio repositorioRemedio = new RemedioRepositorio();
             FornecedorRepositorio fornecedor = new FornecedorRepositorio();
-            AquisicaoRepositorio aquisicao = new AquisicaoRepositorio();
-            TelaRemedio telaRemedio = new TelaRemedio();
+            SubMenuRemedio subMenuRemedio = new SubMenuRemedio();
+            SubMenuPaciente subMenuPaciente = new SubMenuPaciente();
+            SubMenuFuncionario subMenuFuncionario = new SubMenuFuncionario();
+            SubMenuFornecedor subMenuFornecedor = new SubMenuFornecedor();
             Tela tela = new Tela();
 
             
@@ -86,14 +87,10 @@ namespace ControleDeMedicamentos.ConsoleAPP
             while (valor != 0)
             {
                 Console.WriteLine("Qual Area deseja entrar?");
-                Console.WriteLine("[1] Cadastrar Funcionario");
-                Console.WriteLine("[2] Cadastrar Fornecedor");
-                Console.WriteLine("[3] Cadastrar Remedios");
-                Console.WriteLine("[4] Cadastrar Pacientes");
-                Console.WriteLine("[5] Cadastrar Requisicoes");
-                Console.WriteLine("[6] Fazer Aquisicao de medicamento");
-                Console.WriteLine("[7] Ver remedios com baixo estoque");
-                Console.WriteLine("[8] Ver remedios com maior frequencia de saida!");
+                Console.WriteLine("[1] Remedios");
+                Console.WriteLine("[2] Pacientes");
+                Console.WriteLine("[3] Funcionario");
+                Console.WriteLine("[4] Fornecedores");
                 Console.WriteLine("[0] Sair");
                 valor = int.Parse(Console.ReadLine());
 
@@ -101,50 +98,44 @@ namespace ControleDeMedicamentos.ConsoleAPP
                 {
                     case 1:
                         Console.Clear();
-                        Funcionario funcionario = CriarFuncionarioAturomatico();
-                        repositorio.AdicionarArray(func.listaFuncionarios, funcionario);
+                        subMenuRemedio.SubmenuRemedio(repositorioRemedio.remediosCadastados, repositorioRemedio.RemediosBaixoEstoque);
                         break;
 
                     case 2:
                         Console.Clear();
-                        //Fornecedor fornecedorAuto = CirarForncedorAutomatico();
-                        //repositorio.AdicionarArray(fornecedor.Fornecedores, fornecedorAuto);
-                        fornecedor.CriarFornecedor();
+                        subMenuPaciente.SubmenuPaciente(paciente.pacientes);
                         break;
 
                     case 3:
                         Console.Clear();
-                        //Remedio remeioAuto = CrirarRemedioAtomatico();
-                        //repositorio.AdicionarArray(repositorioRemedio.remediosCadastados, remeioAuto);
-                        repositorioRemedio.CriarRemedio();
+                        subMenuFuncionario.SubmenuFuncionario(func.listaFuncionarios, fornecedor.fornecedores, repositorioRemedio.remediosCadastados, paciente.pacientes, repositorioRemedio.RemediosBaixoEstoque, repositorio.requisicoesAbertas);
                         break;
 
                     case 4:
                         Console.Clear();
-                        Paciente pacienteAuto = CriarPacienteAutomatico();
-                        repositorio.AdicionarArray(paciente.pacientes, pacienteAuto);
+                        subMenuFornecedor.SubmenuFornecedor(fornecedor.fornecedores, repositorioRemedio.remediosCadastados);
                         break;
 
-                    case 5:
-                        Console.Clear();
-                        requisicao.FazerRequisicao(func.listaFuncionarios, paciente.pacientes, repositorioRemedio.remediosCadastados, fornecedor.fornecedores, repositorio.RemediosBaixoEstoque);
-                        break;
 
-                    case 6:
-                        Console.Clear();
-                        aquisicao.FazerAquisicao(repositorioRemedio.remediosCadastados, fornecedor.fornecedores, func.listaFuncionarios, repositorio.RemediosBaixoEstoque);
-                        break;
+                    //case 5:
+                    //    Console.Clear();
+                    //    requisicao.FazerRequisicao(func.listaFuncionarios, paciente.pacientes, repositorioRemedio.remediosCadastados, fornecedor.fornecedores, repositorio.RemediosBaixoEstoque);
+                    //    break;
 
-                    case 7:
-                        Console.Clear();
-                        tela.MostrarObjetos<Remedio>(repositorio.RemediosBaixoEstoque, repositorio.camposRemedio);
-                        telaRemedio.MostrarRemediosBaixoEstoque(repositorio.RemediosBaixoEstoque);
-                        break;
+                    //case 6:
+                    //    Console.Clear();
+                    //    aquisicao.FazerAquisicao(repositorioRemedio.remediosCadastados, fornecedor.fornecedores, func.listaFuncionarios, repositorio.RemediosBaixoEstoque);
+                    //    break;
 
-                    case 8:
-                        Console.Clear();
-                        telaRemedio.MostrarRemedioMaisRetirado(repositorioRemedio.remediosCadastados);
-                        break;
+                    //case 7:
+                    //    Console.Clear();
+                    //    tela.MostrarObjetos<Remedio>(repositorio.RemediosBaixoEstoque, repositorio.camposRemedio);
+                    //    break;
+
+                    //case 8:
+                    //    Console.Clear();
+                    //    telaRemedio.MostrarRemedioMaisRetirado(repositorioRemedio.remediosCadastados);
+                    //    break;
                 }
             }
         }

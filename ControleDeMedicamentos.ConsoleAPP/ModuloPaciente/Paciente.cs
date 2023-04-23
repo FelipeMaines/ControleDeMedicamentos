@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentos.ConsoleAPP.Junta;
+using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,14 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
             this.telefone = telefone;
         }
 
+        public override void Atualizar(Entidade entidadeAtualizada)
+        {
+            Paciente entidade = (Paciente)entidadeAtualizada;
+
+            nome = entidade.nome;
+            cpf = entidade.cpf;
+            cartaoSus = entidade.cartaoSus;
+            telefone = entidade.telefone;
+        }
     }
 }

@@ -33,21 +33,14 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             this.quantidadeMinima = quantidadeMinima;
         }
 
-        public void VerificarQuantidadeRemedio()
+       public override void Atualizar(Entidade entidadeAtualizada)
         {
-            if(quantidade < quantidadeMinima)
-            {
-                tela.Mensagem("Quantidade de remedio abaixo do necessario!", ConsoleColor.DarkRed);
-                Console.ReadLine();
-                return;
-            }
+            Remedio entidade = (Remedio)entidadeAtualizada;
 
-            else if (quantidade == 0)
-            {
-                tela.Mensagem("O remedio acabou no estoque!", ConsoleColor.DarkRed);
-                Console.ReadLine();
-                return;
-            }
+            nome = entidade.nome;
+            descricao = entidade.descricao;
+            quantidade = entidade.quantidade;
+            quantidadeMinima = entidade.quantidadeMinima;
         }
     }
 }

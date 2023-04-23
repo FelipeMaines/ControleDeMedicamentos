@@ -12,14 +12,17 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
     {
         TelaRemedio tela = new TelaRemedio();
 
-        public void CriarRemedio()
+        public void CriarRemedio(ArrayList array)
         {
 
-            Remedio remedio = tela.PegarInformacoesRemedio(remediosCadastados);
-            AdicionarArray(remediosCadastados, remedio);
+            Remedio remedio = tela.PegarInformacoesRemedio(array);
+            AdicionarArray(array, remedio);
         }
 
-        
+       
+
+       
+
     }
 
 

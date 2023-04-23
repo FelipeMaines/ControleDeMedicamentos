@@ -2,19 +2,11 @@
 using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleAPP.ModuloRemedio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
+namespace ControleDeMedicamentos.ConsoleAPP.ModuloRequiscao
 {
     public class Requisicao : Entidade
     {
-        Repositorio repositorio = new Repositorio();
-        Tela tela = new Tela();
-
         public Paciente paciente;
         public Remedio remedio;
         public Funcionario funcionario;

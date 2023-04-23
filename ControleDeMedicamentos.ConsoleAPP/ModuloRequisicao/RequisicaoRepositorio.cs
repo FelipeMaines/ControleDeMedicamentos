@@ -7,18 +7,15 @@ using System;
 using System.Collections;
 
 
-namespace ControleDeMedicamentos.ConsoleAPP.Requisicao
+namespace ControleDeMedicamentos.ConsoleAPP.ModuloRequiscao
 {
     public class RequisicaoRepositorio : Repositorio
     {
-        ArrayList requisicoesAbertas = new ArrayList();
         Tela tela = new Tela();
-        TelaFuncionario telaFunc = new TelaFuncionario();
         TelaRemedio telaRemedio = new TelaRemedio();
-        TelaPaciente telaPaciente = new TelaPaciente();
         TelaRequisicao telaRequisicao = new TelaRequisicao();
         AquisicaoRepositorio aquisicao = new AquisicaoRepositorio();
-        public Requisicao FazerRequisicao(ArrayList listaFuncionarios, ArrayList pacientes, ArrayList remediosCadastados, ArrayList fornecedores, ArrayList RemediosBaixoEstoque)
+        public Requisicao FazerRequisicao(ArrayList listaFuncionarios, ArrayList pacientes, ArrayList remediosCadastados, ArrayList fornecedores, ArrayList RemediosBaixoEstoque, ArrayList requisicoesAbertas)
         {
             Console.Clear();
 

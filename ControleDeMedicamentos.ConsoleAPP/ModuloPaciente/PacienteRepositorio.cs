@@ -11,7 +11,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
     public class PacienteRepositorio : Repositorio
     {
         TelaPaciente tela = new TelaPaciente();
-        public void CriarPaciente()
+        public void CriarPaciente(ArrayList pacientes)
         {
             Paciente paciente = tela.PegarInformacoesPaciente(pacientes);
             AdicionarArray(pacientes, paciente);

@@ -1,12 +1,10 @@
 ﻿using ControleDeMedicamentos.ConsoleAPP.Junta;
-using ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario;
+using ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor;
 using ControleDeMedicamentos.ConsoleAPP.ModuloPaciente;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+
 
 namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
@@ -29,6 +27,24 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             int quantiadeMinima = int.Parse(Console.ReadLine());
 
             Remedio remedio = new Remedio(id, nome, descricao, quantidade, quantiadeMinima);
+
+            return remedio;
+        }
+
+        public Remedio PegarInformacoesDeEdicao()
+        {
+            Remedio remedio = new Remedio();
+            Console.WriteLine("Qual o novo nome do Remedio? ");
+            remedio.nome = Console.ReadLine();
+
+            Console.WriteLine("Qual a descricao do Remedio? ");
+            remedio.descricao = Console.ReadLine();
+
+            Console.WriteLine("Qual a nova quantidade em estoque do Remedio? ");
+            remedio.quantidade = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Qual a nova qauntidade minima que deve ter no estoque?");
+            remedio.quantidadeMinima = int.Parse(Console.ReadLine());
 
             return remedio;
         }
@@ -133,5 +149,76 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             Console.ReadLine();
             Console.Clear();
         }
+    }
+
+    public class SubMenuRemedio : RemedioRepositorio
+    {
+        int valor = 1;
+        public void SubmenuRemedio(ArrayList arrayRemedio, ArrayList baixoEstoque)
+        {
+            Repositorio repositorio = new Repositorio();
+            TelaRemedio telaRemedio = new TelaRemedio();
+            Tela tela = new Tela();
+
+            Console.WriteLine("[1] Cadastrar remedio");
+            Console.WriteLine("[2] Editar remedio");
+            Console.WriteLine("[3] Excluir Remedio cadastrado");
+            Console.WriteLine("[4] Ver Remedios cadastrados");
+            Console.WriteLine("[5] Ver Remedios Com baixo estoque");
+            Console.WriteLine("[6] Ver remedios com maior frequencia de saida!");
+
+            valor = int.Parse(Console.ReadLine());
+
+            switch (valor)
+            {
+                case 1:
+                    Console.Clear();
+                    CriarRemedio(arrayRemedio);
+                    tela.Mensagem("Remedio cadastrado com sucesso", ConsoleColor.Green);
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+
+                case 2:
+                    Console.Clear();
+                    int id = PerguntarId();
+                    Remedio remedio = telaRemedio.PegarInformacoesDeEdicao();
+                    Editar(remedio, id, arrayRemedio);
+                    tela.Mensagem("Remedio Editado com sucesso", ConsoleColor.Green);
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+
+                case 4:
+                    Console.Clear();
+                    tela.MostrarObjetos<Remedio>(arrayRemedio, camposRemedio);
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+
+                case 3:
+                    Console.Clear();
+                    Excluir(arrayRemedio, camposRemedio);
+                    tela.Mensagem("Remedio Editado com sucesso", ConsoleColor.Green);
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+
+                case 5:
+                    Console.Clear();
+                    telaRemedio.MostrarRemediosBaixoEstoque(baixoEstoque);
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+
+                case 6:
+                    Console.Clear();
+                    telaRemedio.MostrarRemedioMaisRetirado(arrayRemedio);
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+            }
+        }
+        
     }
 }

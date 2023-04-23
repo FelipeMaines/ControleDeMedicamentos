@@ -11,7 +11,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
     public class FuncionarioRepositorio : Repositorio
     {
         public TelaFuncionario telaFuncionario = new TelaFuncionario();
-        public void CriarFuncionario()
+        public void CriarFuncionario(ArrayList listaFuncionarios)
         {
            Funcionario funcionario = telaFuncionario.PegarInfoECriarFuncionario(listaFuncionarios);
 
