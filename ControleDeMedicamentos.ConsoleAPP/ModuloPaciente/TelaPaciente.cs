@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 
 namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
 {
-    public class TelaPaciente
+    public class TelaPaciente : Tela
     {
-        public Paciente PegarInformacoesPaciente(ArrayList array)
+        public override Paciente PegarECriarEntidade()
         {
-            int id = array.Count;
 
             Console.WriteLine("Qual o nome do Paciente? ");
             string nome = Console.ReadLine();
@@ -28,28 +27,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
             Console.WriteLine("Qual o telefone do Paciente? ");
             string telefone = Console.ReadLine();
 
-            Paciente paciente = new Paciente(id, nome, cpf, sus , telefone);
-
-            return paciente;
-        }
-
-        public Paciente PegarInformacoesPacienteEdicao(ArrayList array)
-        {
-            int id = array.Count;
-
-            Console.WriteLine("Qual o nome do Paciente? ");
-            string nome = Console.ReadLine();
-
-            Console.WriteLine("Qual o cpf do Paciente? ");
-            string cpf = Console.ReadLine();
-
-            Console.WriteLine("Qual o numero do cartao do sus do Paciente? ");
-            string sus = Console.ReadLine();
-
-            Console.WriteLine("Qual o telefone do Paciente? ");
-            string telefone = Console.ReadLine();
-
-            Paciente paciente = new Paciente(id, nome, cpf, sus, telefone);
+            Paciente paciente = new Paciente(nome, cpf, sus, telefone);
 
             return paciente;
         }
@@ -107,7 +85,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
             tela.MostrarObjetos<Paciente>(arrayPacientes, camposPacientes);
             int id = PerguntarId();
             Console.Clear();
-            Paciente pacienteEdicao = telaPaceinte.PegarInformacoesPacienteEdicao(arrayPacientes);
+            Paciente pacienteEdicao = telaPaceinte.PegarECriarEntidade();
             Editar(pacienteEdicao, id, arrayPacientes);
             tela.Mensagem("Paciente Editado com sucesso", ConsoleColor.Green);
             Console.ReadLine();

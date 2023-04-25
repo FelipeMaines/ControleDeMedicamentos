@@ -7,6 +7,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 {
     public class Fornecedor : Entidade
     {
+        private string numeroTelefone;
+
         public string nome { get; set; }
         public string numeroContato { get; set; }
         public ArrayList medicamentos { get; set; }
@@ -24,6 +26,14 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
             this.cnpj = cnpj;
             this.medicamentos = medicamentos;
             this.id = id;
+        }
+
+        public Fornecedor(string nome, string cnpj, string numeroTelefone, ArrayList medicamentos)
+        {
+            this.nome = nome;
+            this.cnpj = cnpj;
+            this.numeroTelefone = numeroTelefone;
+            this.medicamentos = medicamentos;
         }
     }
 }

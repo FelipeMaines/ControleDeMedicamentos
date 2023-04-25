@@ -16,32 +16,15 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
 {
     public class TelaFuncionario : Tela
     {
-        public Funcionario PegarInfoECriarFuncionario(ArrayList array)
+        public override Funcionario PegarECriarEntidade()
         {
-            int id = array.Count;
-
             Console.WriteLine("Qual o nome do funcionario? ");
             string nome = Console.ReadLine();
 
             Console.WriteLine("Qual o cpf do funcionario? ");
             string cpf = Console.ReadLine();
 
-            Funcionario funcionario = new Funcionario(id, nome, cpf);
-
-            return funcionario;
-        }
-
-        internal Funcionario PegarInformacoesDeEdicaoFuncionario(ArrayList array)
-        {
-            int id = array.Count;
-
-            Console.WriteLine("Qual o nome do funcionario? ");
-            string nome = Console.ReadLine();
-
-            Console.WriteLine("Qual o cpf do funcionario? ");
-            string cpf = Console.ReadLine();
-
-            Funcionario funcionario = new Funcionario(id, nome, cpf);
+            Funcionario funcionario = new Funcionario(nome, cpf);
 
             return funcionario;
         }
@@ -77,14 +60,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
                     break;
 
                 case 2:
-                    Console.Clear();
-                    telaFuncionario.MostrarObjetos<Funcionario>(arrayFuncionarios, camposFuncionarios);
-                    int id = PerguntarId();
-                    Funcionario funcionario = telaFuncionario.PegarInformacoesDeEdicaoFuncionario(arrayFuncionarios);
-                    Editar(funcionario, id, arrayFuncionarios);
-                    tela.Mensagem("Funcionario Editado com sucesso", ConsoleColor.Green);
-                    Console.ReadLine();
-                    Console.Clear();
+                    EditarFuncionario(arrayFuncionarios, telaFuncionario, tela);
                     break;
 
                 case 3:
@@ -127,5 +103,16 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
 
         }
 
+        private void EditarFuncionario(ArrayList arrayFuncionarios, TelaFuncionario telaFuncionario, Tela tela)
+        {
+            Console.Clear();
+            telaFuncionario.MostrarObjetos<Funcionario>(arrayFuncionarios, camposFuncionarios);
+            int id = PerguntarId();
+            Funcionario funcionario = telaFuncionario.PegarECriarEntidade();
+            Editar(funcionario, id, arrayFuncionarios);
+            tela.Mensagem("Funcionario Editado com sucesso", ConsoleColor.Green);
+            Console.ReadLine();
+            Console.Clear();
+        }
     }
 }

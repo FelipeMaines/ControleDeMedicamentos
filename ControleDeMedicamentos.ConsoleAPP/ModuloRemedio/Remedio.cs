@@ -10,7 +10,6 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
     public class Remedio : Entidade
     {
-        Tela tela = new Tela();
         public string nome { get; set; }
         public string descricao { get; set; }
         public int quantidade { get; set; }
@@ -33,7 +32,15 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             this.quantidadeMinima = quantidadeMinima;
         }
 
-       public override void Atualizar(Entidade entidadeAtualizada)
+        public Remedio(string nome, string descricao, int quantidade, int quantiadeMinima)
+        {
+            this.nome = nome;
+            this.descricao = descricao;
+            this.quantidade = quantidade;
+            this.quantidadeMinima = quantiadeMinima;
+        }
+
+        public override void Atualizar(Entidade entidadeAtualizada)
         {
             Remedio entidade = (Remedio)entidadeAtualizada;
 

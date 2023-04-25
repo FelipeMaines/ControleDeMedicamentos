@@ -24,6 +24,12 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
             this.id = id;
         }
 
+        public Funcionario(string nome, string cpf)
+        {
+            this.nome = nome;
+            this.cpf = cpf;
+        }
+
         public override void Atualizar(Entidade entidadeAtualizada)
         {
             Funcionario entidade = (Funcionario)entidadeAtualizada;

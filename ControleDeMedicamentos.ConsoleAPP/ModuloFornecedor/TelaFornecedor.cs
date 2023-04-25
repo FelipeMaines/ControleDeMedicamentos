@@ -7,11 +7,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 {
     public class TelaFornecedor : Tela
     {
-        public Fornecedor PegarInformacoesFornecedor(ArrayList array)
+        public override Fornecedor PegarECriarEntidade()
         {
-
-            int id = array.Count;
-
             ArrayList medicamentos = new ArrayList();
             string nomeMedicamento = "";
 
@@ -23,7 +20,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 
             Console.WriteLine("Qual o numero de telefone?");
             string numeroTelefone = Console.ReadLine();
-
+    
             do
             {
                 Console.WriteLine("Qual os medicamentos que ele fornece? / s para sair");
@@ -34,7 +31,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
 
             } while (nomeMedicamento != "s");
 
-            Fornecedor fornecedor = new Fornecedor(id,nome, cnpj, numeroTelefone, medicamentos);
+            Fornecedor fornecedor = new Fornecedor(nome, cnpj, numeroTelefone, medicamentos);
 
             Mensagem("Forncedor cadastrado com sucesso!", ConsoleColor.Green);
             Console.ReadLine();
@@ -72,7 +69,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
                 case 2:
                     Console.Clear();
                     int id = PerguntarId();
-                    Fornecedor fornecedor = telaFornecedor.PegarInformacoesFornecedor(fornecedoresCadastrados);
+                    Fornecedor fornecedor = telaFornecedor.PegarECriarEntidade();
                     Editar(fornecedor, id, fornecedoresCadastrados);
                     tela.Mensagem("Fornecedor Editado com sucesso", ConsoleColor.Green);
                     Console.ReadLine();

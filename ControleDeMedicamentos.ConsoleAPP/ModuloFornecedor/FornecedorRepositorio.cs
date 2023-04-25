@@ -13,7 +13,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFornecedor
         TelaFornecedor tela = new TelaFornecedor();
         public void CriarFornecedor(ArrayList fornecedoresCadastrados)
         {
-            Fornecedor fornecedor = tela.PegarInformacoesFornecedor(fornecedoresCadastrados);
+            Fornecedor fornecedor = tela.PegarECriarEntidade();
 
             AdicionarArray(fornecedoresCadastrados, fornecedor);
         }

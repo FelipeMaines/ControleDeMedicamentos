@@ -10,10 +10,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
     public class TelaRemedio : Tela
     {
-        public Remedio PegarInformacoesRemedio(ArrayList array)
+        public override Remedio PegarECriarEntidade()
         {
-            int id = array.Count;
-
             Console.WriteLine("Qual o nome do Remedio? ");
             string nome = Console.ReadLine();
 
@@ -26,42 +24,9 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
             Console.WriteLine("Qual a qauntidade minima que deve ter no estoque?");
             int quantiadeMinima = int.Parse(Console.ReadLine());
 
-            Remedio remedio = new Remedio(id, nome, descricao, quantidade, quantiadeMinima);
+            Remedio remedio = new Remedio(nome, descricao, quantidade, quantiadeMinima);
 
             return remedio;
-        }
-
-        public Remedio PegarInformacoesDeEdicao()
-        {
-            Remedio remedio = new Remedio();
-            Console.WriteLine("Qual o novo nome do Remedio? ");
-            remedio.nome = Console.ReadLine();
-
-            Console.WriteLine("Qual a descricao do Remedio? ");
-            remedio.descricao = Console.ReadLine();
-
-            Console.WriteLine("Qual a nova quantidade em estoque do Remedio? ");
-            remedio.quantidade = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Qual a nova qauntidade minima que deve ter no estoque?");
-            remedio.quantidadeMinima = int.Parse(Console.ReadLine());
-
-            return remedio;
-        }
-
-        public void MostrarRemedios(ArrayList array)
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-
-            Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} |{3,-20}", "Id", "Nome", "Descricao", "Quantidade em Estoque");
-
-            foreach (Remedio item in array)
-            {
-                Console.WriteLine("|{0,-15} |{1,-15} |{2,-20} |{3,-20}", item.id, item.nome, item.descricao, item.quantidade);
-            }
-
-            Console.ResetColor();
         }
 
         public void EncherArrayBaixoEstoque(ArrayList arraybaixoestoque, ArrayList ListaRemedios)
@@ -181,9 +146,10 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 
                 case 2:
                     Console.Clear();
+                    tela.MostrarObjetos<Remedio>(arrayRemedio, camposRemedio);
                     int id = PerguntarId();
-                    Remedio remedio = telaRemedio.PegarInformacoesDeEdicao();
-                    Editar(remedio, id, arrayRemedio);
+                    Remedio remedioatualizado = telaRemedio.PegarECriarEntidade();
+                    Editar(remedioatualizado, id, arrayRemedio);
                     tela.Mensagem("Remedio Editado com sucesso", ConsoleColor.Green);
                     Console.ReadLine();
                     Console.Clear();

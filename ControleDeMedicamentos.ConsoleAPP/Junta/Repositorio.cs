@@ -12,28 +12,20 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
 
     public class Repositorio
     {
-        public ArrayList listaFuncionarios = new ArrayList();
-        public ArrayList pacientes = new ArrayList();
-        public ArrayList remediosCadastados = new ArrayList();
-        public ArrayList fornecedores = new ArrayList();
-        public ArrayList Aquisicao = new ArrayList();
-        public ArrayList RemediosBaixoEstoque = new ArrayList();
-        public ArrayList requisicoesAbertas = new ArrayList();
+        Tela tela = new Tela();
+        public ArrayList listaRegistros = new ArrayList();
+        public int contador = 0;
         public string[] camposRemedio = { "id","nome", "descricao", "quantidade", "quantidadeMinima" };
         public string[] camposFuncionarios = { "id", "nome", "cpf" };
         public string[] camposPacientes = { "id", "nome", "cpf", "cartaoSus", "telefone" };
         public string[] camposFornecedor = { "id", "nome", "numeroContato", "cnpj" };
         public string[] camposRequisicao = { "id", "paciente", "remedio", "Funcionario", "Data", "quantidadeMedicamento" };
-
-        
-
-        Tela tela = new Tela();
-
         public void AdicionarArray(ArrayList array, Entidade item)
         {
+            item.id = contador;
+            contador++;
             array.Add(item);
         }
-
         public Entidade BuscarPorId(ArrayList array, int id)
         {
 
@@ -49,10 +41,9 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
 
             return entidade;
         }
-
         public void Excluir(ArrayList array, string[] campo)
         {
-            Entidade entidade = PegarEntidade(array, "Qual o id do remedio que deseja excluir", campo);
+            Entidade entidade = PegarEntidade(array, "Qual o id da entidade que deseja excluir", campo);
 
             int index = array.IndexOf(entidade);
             array.RemoveAt(index);
@@ -67,16 +58,15 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
             Entidade entidade = BuscarPorId(array, id);
             return entidade;
         }
-
         public void Editar(Entidade entidadeAtualizada, int id, ArrayList array)
         {
             Entidade entidade = BuscarPorId(array, id);
+
             entidade.Atualizar(entidadeAtualizada);
 
             Console.ReadLine();
             Console.Clear();
         }
-
         public int PerguntarId()
         {
             Console.WriteLine("Qual o id deseja editar?");

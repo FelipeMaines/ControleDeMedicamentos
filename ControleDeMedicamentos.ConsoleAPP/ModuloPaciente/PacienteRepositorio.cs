@@ -13,7 +13,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
         TelaPaciente tela = new TelaPaciente();
         public void CriarPaciente(ArrayList pacientes)
         {
-            Paciente paciente = tela.PegarInformacoesPaciente(pacientes);
+            Paciente paciente = tela.PegarECriarEntidade();
             AdicionarArray(pacientes, paciente);
         }
     }

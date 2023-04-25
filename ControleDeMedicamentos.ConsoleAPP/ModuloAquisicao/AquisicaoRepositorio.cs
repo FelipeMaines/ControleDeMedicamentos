@@ -21,7 +21,7 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
             if (VerificarSeExiste(remediosCadastados, Fornecedores, listaFuncionarios))
                 return;
 
-            Remedio remedio = telaAquisicao.PegarValorRemedio(remediosCadastados);
+            Remedio remedio = (Remedio)PegarEntidade(remediosCadastados, "Qual remedio deseja adicionar?", camposRemedio);
 
             int idFornecedor = BuscarFornecedor(remedio, Fornecedores);
 
@@ -35,18 +35,18 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloAquisicao
 
             Console.Clear();
 
-            Funcionario funcionario = telaAquisicao.PegarValorFuncionario(listaFuncionarios);
+            Funcionario funcionario = (Funcionario)PegarEntidade(listaFuncionarios, "Qual o id do funcionario fazendo a Aquisicao?", camposFuncionarios);
 
             Console.Clear();
 
             DateTime date = DateTime.Today;
-            int quantidade = tela.PegarInformacao("Qual a quantidade de medicamento deseja adicionar ao estoque?");
+            int quantidade = tela.PegarOpcaoId("Qual a quantidade de medicamento deseja adicionar ao estoque?");
             remedio.quantidade += quantidade;
 
             Console.Clear();
 
             var aquisicao = new Aquisicao(fornecedor, remedio, funcionario, date, quantidade);
-            AdicionarArray(Aquisicao, aquisicao);
+            AdicionarArray(listaRegistros, aquisicao);
 
             telaRemedio.TirarDoBaixoEstoque(RemediosBaixoEstoque);
             tela.Mensagem("Aquisicao feita com sucesso!", ConsoleColor.Green);

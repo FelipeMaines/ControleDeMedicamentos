@@ -13,10 +13,8 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloFuncionario
         public TelaFuncionario telaFuncionario = new TelaFuncionario();
         public void CriarFuncionario(ArrayList listaFuncionarios)
         {
-           Funcionario funcionario = telaFuncionario.PegarInfoECriarFuncionario(listaFuncionarios);
-
-            AdicionarArray(listaFuncionarios, funcionario);
-            Console.WriteLine("a");
+           Funcionario funcionario = telaFuncionario.PegarECriarEntidade();
+           AdicionarArray(listaFuncionarios, funcionario);
         }
     }
 }

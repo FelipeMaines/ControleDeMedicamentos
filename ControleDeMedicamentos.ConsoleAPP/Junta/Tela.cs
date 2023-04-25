@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 
 namespace ControleDeMedicamentos.ConsoleAPP.Junta
 {
@@ -12,22 +10,12 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
             Console.WriteLine(texto);
             Console.ResetColor();
         }
-
         public int PegarOpcaoId(string mensagem)
         {
             Mensagem(mensagem, ConsoleColor.White);
             int id = int.Parse(Console.ReadLine());
             return id;
         }
-
-        public int PegarInformacao(string mensagem)
-        {
-            Mensagem(mensagem, ConsoleColor.White);
-            int item = int.Parse(Console.ReadLine());
-
-            return item;
-        }
-
         public void MostrarObjetos<T>(ArrayList array, string[] campos)
         {
             Console.Clear();
@@ -57,6 +45,10 @@ namespace ControleDeMedicamentos.ConsoleAPP.Junta
                 Console.WriteLine();
             }
             Console.ResetColor();
+        }
+        public virtual Entidade PegarECriarEntidade()
+        {
+            return null;
         }
     }
 }

@@ -10,12 +10,12 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRemedio
 {
     public class RemedioRepositorio : Repositorio
     {
+        public ArrayList remediosBaixoEstoque = new ArrayList();
         TelaRemedio tela = new TelaRemedio();
 
         public void CriarRemedio(ArrayList array)
         {
-
-            Remedio remedio = tela.PegarInformacoesRemedio(array);
+            Remedio remedio = tela.PegarECriarEntidade();
             AdicionarArray(array, remedio);
         }
 

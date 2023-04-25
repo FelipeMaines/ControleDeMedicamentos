@@ -27,6 +27,14 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloPaciente
             this.telefone = telefone;
         }
 
+        public Paciente(string nome, string cpf, string sus, string telefone)
+        {
+            this.nome = nome;
+            this.cpf = cpf;
+            this.cartaoSus = sus;
+            this.telefone = telefone;
+        }
+
         public override void Atualizar(Entidade entidadeAtualizada)
         {
             Paciente entidade = (Paciente)entidadeAtualizada;

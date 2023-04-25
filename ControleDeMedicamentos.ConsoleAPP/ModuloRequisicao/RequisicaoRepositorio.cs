@@ -26,18 +26,17 @@ namespace ControleDeMedicamentos.ConsoleAPP.ModuloRequiscao
 
             Console.Clear();
             
-            Remedio remedio = telaRequisicao.PegarRemedio(remediosCadastados);
+            Remedio remedio = (Remedio)PegarEntidade(remediosCadastados, "Qual o id do remedio?", camposRemedio); 
             VerificarSeAhRemedio(remedio, remediosCadastados, fornecedores, listaFuncionarios, pacientes, RemediosBaixoEstoque);
             remedio.vezesRetirados += 1;
 
             Console.Clear();
 
-            Paciente paciente = telaRequisicao.PegarPaciente(pacientes);
+            Paciente paciente = (Paciente)PegarEntidade(pacientes, "Qual o id do paciente?", camposPacientes);
 
             Console.Clear();
 
             int quantidadeRemedio = telaRequisicao.PegarQuantidadeRemedio();
-
             VerificarQuantidadeSaida(remedio, quantidadeRemedio);
 
             DateTime data = DateTime.Today;
